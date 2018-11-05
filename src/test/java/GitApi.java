@@ -12,8 +12,8 @@ public class GitApi {
     private static GitUser oneUser;
     private static Repo oneRepo;
     private static Response response;
-    private static List<GitUser> gitUsers;
-    private static List<Repo> gitRepos;
+    private static List<GitUser> gitUsers, gitFollowers;
+    private static List<Repo> gitRepos, gitSubscriptions;
 
     @BeforeAll
     public static void setUp(){
@@ -71,5 +71,19 @@ public class GitApi {
         for (Repo repos : gitRepos) {
             System.out.println(repos.getName());
         }
+    }
+
+    @Test
+    public void findNoOfFollowers(){
+        response = get(oneUser.getFollowers_url());
+        gitFollowers = Arrays.asList(response.getBody().as(GitUser[].class));
+        assertEquals(30, gitFollowers.size());
+    }
+
+    @Test
+    public void findNoOfSubscriptions(){
+        response = get(oneUser.getSubscriptions_url());
+        gitSubscriptions = Arrays.asList(response.getBody().as(Repo[].class));
+        System.out.println("GIT SUBSCRIPTIONS FOR USER "+oneUser.getLogin()+" ARE "+gitSubscriptions.size());
     }
 }
