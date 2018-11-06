@@ -4,6 +4,8 @@
  and stores response in an object. Initially when you make a request it receives up to 30 popular Git users, we store
  them in a List and iterate through.**
 
+## To run tests
+> mvn test
 
  ###### Libraries
  - Rest Assured - 3.2.0
