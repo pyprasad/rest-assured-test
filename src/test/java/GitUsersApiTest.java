@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.*;
 import utils.*;
 
-public class GitApi {
+public class GitUsersApiTest {
 
     private static GitUser oneUser;
     private static Repo oneRepo;
